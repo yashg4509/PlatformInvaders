@@ -1,6 +1,7 @@
 package main;
 
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 public class Texture {
 	
@@ -12,10 +13,21 @@ public class Texture {
 	public Texture() {
 		BufferedImageLoader loader = new BufferedImageLoader();
 		
+		try {
 		block = loader.loadImage("/brick-block-platforms.png");
 		coin = loader.loadImage("/coin.PNG");
 		lava = loader.loadImage("/lava.PNG");
 		playerSheet = loader.loadImage("/player.jpg");
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		getTextures();
+	}
+
+	private void getTextures() {
+		
 	}
 	
 }

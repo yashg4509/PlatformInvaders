@@ -22,10 +22,11 @@ public class LavaRunner extends Canvas implements Runnable {
 	public static int WIDTH, HEIGHT;
 
 	private BufferedImage level = null;
-
+	
+	static Texture tex = LavaRunner.getInstance();
 	Handler handler;
 	Camera c;
-
+	
 	public synchronized void start() {
 		if (running) {
 			return;
@@ -71,6 +72,8 @@ public class LavaRunner extends Canvas implements Runnable {
 		WIDTH = getWidth();
 
 		HEIGHT = getHeight();
+		
+		tex = new Texture();
 
 		BufferedImageLoader loader = new BufferedImageLoader();
 
@@ -144,7 +147,11 @@ public class LavaRunner extends Canvas implements Runnable {
 			}
 		}
 	}
-
+	
+	public static Texture getInstance() {
+		return tex;
+	}
+	
 	public static void main(String[] args) {
 		new Window(800, 600, "Lava Runner", new LavaRunner());
 	}
