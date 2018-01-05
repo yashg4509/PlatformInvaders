@@ -14,6 +14,7 @@ public class Player extends GameObject{
 	private final float MAX_SPEED = 10;
 	
 	private Handler handler;
+
 	
 	public Player(float x, float y, Handler handler, ObjectId id) {
 		super(x, y, id);
@@ -32,6 +33,7 @@ public class Player extends GameObject{
 			}
 		}
 		collision(object);
+		
 	}
 	
 	private void collision(LinkedList<GameObject> object) {
@@ -68,6 +70,7 @@ public class Player extends GameObject{
 	public void render(Graphics g) {
 		g.setColor(Color.blue);
 		g.fillRect((int)x, (int)y, (int)width, (int)height);
+		
 
 	}
 

@@ -13,7 +13,7 @@ import framework.KeyInput;
 import framework.ObjectId;
 import objects.Block;
 
-public class LavaRunner extends Canvas implements Runnable {
+public class PlatformRacer extends Canvas implements Runnable {
 
 	private static final long serialVersionUID = -599111449181499216L;
 	private boolean running = false;
@@ -23,7 +23,7 @@ public class LavaRunner extends Canvas implements Runnable {
 
 	private BufferedImage level = null;
 	
-	static Texture tex = LavaRunner.getInstance();
+	static Texture tex = PlatformRacer.getInstance();
 	Handler handler;
 	Camera c;
 	
@@ -86,6 +86,7 @@ public class LavaRunner extends Canvas implements Runnable {
 		loadLevel(level);
 
 		handler.addObject(new Player(100, 100, handler, ObjectId.Player));
+		
 
 		// handler.createLevel();
 
@@ -144,6 +145,8 @@ public class LavaRunner extends Canvas implements Runnable {
 				if(red == 0 && green == 0 && blue == 255) {
 					handler.addObject(new Player(xx * 32, yy * 32, handler, ObjectId.Player));
 				}
+				
+				
 			}
 		}
 	}
@@ -153,7 +156,7 @@ public class LavaRunner extends Canvas implements Runnable {
 	}
 	
 	public static void main(String[] args) {
-		new Window(800, 600, "Lava Runner", new LavaRunner());
+		new Window(800, 600, "Lava Runner", new PlatformRacer());
 	}
 
 }
