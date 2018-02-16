@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
+import java.util.Random;
 
 import javax.swing.JOptionPane;
 
@@ -20,12 +21,17 @@ public class PlatformShooter extends Canvas implements Runnable {
 	private Thread thread;
 
 	public static int WIDTH, HEIGHT;
-
+	
 	private BufferedImage level = null;
 	
 	static Texture tex = PlatformShooter.getInstance();
 	Handler handler;
 	Camera c;
+	Random r = new Random();
+	
+	int initEnemyCount = r.nextInt(35);
+	int randX = r.nextInt(600);
+	int randY = r.nextInt(300);
 	
 	public synchronized void start() {
 		if (running) {
@@ -87,7 +93,10 @@ public class PlatformShooter extends Canvas implements Runnable {
 
 		handler.addObject(new Player(100, 100, handler, ObjectId.Player));
 		
-
+		for (int i = 0; i < initEnemyCount; i++) {
+			handler.addObject(new Enemy(randX, randY, handler, ObjectId.Enemy));
+		}
+		
 		// handler.createLevel();
 
 		this.addKeyListener(new KeyInput(handler));

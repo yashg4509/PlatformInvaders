@@ -22,8 +22,8 @@ public class Enemy extends GameObject{
 		}
 
 		public void tick(LinkedList<GameObject> object) {
-			x += velX;
-			y += velY;
+			x += 2;
+			y += 2;
 			
 			if (falling || jumping) {
 				velY += gravity;
@@ -68,8 +68,8 @@ public class Enemy extends GameObject{
 		}
 
 		public void render(Graphics g) {
-			g.setColor(Color.blue);
-			g.fillRect((int)x, (int)y, (int)width, (int)height);
+			g.setColor(Color.red);
+			g.fillRect((int)x, (int)y, 50, 50);
 			
 
 		}
