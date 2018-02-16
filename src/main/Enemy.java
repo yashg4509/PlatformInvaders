@@ -10,8 +10,9 @@
 
 public class Enemy extends GameObject{
 		private float width = 48, height = 96;
-		private float gravity = 0.5f;
 		private final float MAX_SPEED = 10;
+		
+		int movement = PlatformInvaders.r.nextInt(25);
 		
 		private Handler handler;
 
@@ -22,16 +23,9 @@ public class Enemy extends GameObject{
 		}
 
 		public void tick(LinkedList<GameObject> object) {
-			x += 2;
-			y += 2;
+			x += velX;
+			y += velY;
 			
-			if (falling || jumping) {
-				velY += gravity;
-				
-				if(velY > MAX_SPEED) {
-					velY = MAX_SPEED;
-				}
-			}
 			collision(object);
 			
 		}
@@ -69,8 +63,9 @@ public class Enemy extends GameObject{
 
 		public void render(Graphics g) {
 			g.setColor(Color.red);
-			g.fillRect((int)x, (int)y, 50, 50);
-			
+			g.fillRect((int)x, (int)y, 70, 70);
+			x = x + movement;
+			y = y + movement;
 
 		}
 

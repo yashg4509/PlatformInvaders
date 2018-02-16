@@ -14,7 +14,7 @@ import framework.KeyInput;
 import framework.ObjectId;
 import objects.Block;
 
-public class PlatformShooter extends Canvas implements Runnable {
+public class PlatformInvaders extends Canvas implements Runnable {
 
 	private static final long serialVersionUID = -599111449181499216L;
 	private boolean running = false;
@@ -22,16 +22,19 @@ public class PlatformShooter extends Canvas implements Runnable {
 
 	public static int WIDTH, HEIGHT;
 	
+	public static Random r = new Random();
+	
+	int enemyCount = r.nextInt(35);
+	
+	int enemyX = r.nextInt(513);
+	
+	int enemyY = r.nextInt(513);
+
 	private BufferedImage level = null;
 	
-	static Texture tex = PlatformShooter.getInstance();
+	static Texture tex = PlatformInvaders.getInstance();
 	Handler handler;
 	Camera c;
-	Random r = new Random();
-	
-	int initEnemyCount = r.nextInt(35);
-	int randX = r.nextInt(600);
-	int randY = r.nextInt(300);
 	
 	public synchronized void start() {
 		if (running) {
@@ -93,10 +96,9 @@ public class PlatformShooter extends Canvas implements Runnable {
 
 		handler.addObject(new Player(100, 100, handler, ObjectId.Player));
 		
-		for (int i = 0; i < initEnemyCount; i++) {
-			handler.addObject(new Enemy(randX, randY, handler, ObjectId.Enemy));
+		for (int i = 0; i < enemyCount; i++) {
+		handler.addObject(new Enemy(enemyX, enemyY, handler, ObjectId.Enemy));
 		}
-		
 		// handler.createLevel();
 
 		this.addKeyListener(new KeyInput(handler));
@@ -160,7 +162,7 @@ public class PlatformShooter extends Canvas implements Runnable {
 	}
 	
 	public static void main(String[] args) {
-		new Window(800, 600, "Platform Shooter", new PlatformShooter());
+		new Window(800, 600, "Platform Invaders", new PlatformInvaders());
 	}
 
 }

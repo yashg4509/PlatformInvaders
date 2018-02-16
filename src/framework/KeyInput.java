@@ -21,11 +21,11 @@ public class KeyInput extends KeyAdapter{
 			
 			if(temp.getId() == ObjectId.Player) {
 				
-				if(key == KeyEvent.VK_D) {
+				if(key == KeyEvent.VK_RIGHT) {
 					temp.setVelX(5);
 				}
 				
-				if(key == KeyEvent.VK_A) {
+				else if(key == KeyEvent.VK_LEFT) {
 					temp.setVelX(-5);
 				}
 			}
@@ -45,15 +45,15 @@ public class KeyInput extends KeyAdapter{
 			
 			if(temp.getId() == ObjectId.Player) {
 				
-				if(key == KeyEvent.VK_D) {
+				if(key == KeyEvent.VK_RIGHT) {
 					temp.setVelX(0);
 				}
 				
-				if(key == KeyEvent.VK_A) {
+				else if(key == KeyEvent.VK_LEFT) {
 					temp.setVelX(0);
 				}
 				
-				if(key == KeyEvent.VK_SPACE && !temp.isJumping()) {
+				else if(key == KeyEvent.VK_SPACE && !temp.isJumping()) {
 					temp.setJumping(true);
 					temp.setVelY(-10);
 				}
