@@ -27,6 +27,6 @@ public class Camera {
 	}
 
 	public void tick(GameObject player) {
-		x = -player.getX() + (PlatformRacer.WIDTH/2);
+		x = -player.getX() + (PlatformShooter.WIDTH/2);
 	}
  }

@@ -13,7 +13,7 @@ import framework.KeyInput;
 import framework.ObjectId;
 import objects.Block;
 
-public class PlatformRacer extends Canvas implements Runnable {
+public class PlatformShooter extends Canvas implements Runnable {
 
 	private static final long serialVersionUID = -599111449181499216L;
 	private boolean running = false;
@@ -23,7 +23,7 @@ public class PlatformRacer extends Canvas implements Runnable {
 
 	private BufferedImage level = null;
 	
-	static Texture tex = PlatformRacer.getInstance();
+	static Texture tex = PlatformShooter.getInstance();
 	Handler handler;
 	Camera c;
 	
@@ -142,11 +142,6 @@ public class PlatformRacer extends Canvas implements Runnable {
 					handler.addObject(new Block(xx * 32, yy * 32, ObjectId.Block));
 				}
 				
-				if(red == 0 && green == 0 && blue == 255) {
-					handler.addObject(new Player(xx * 32, yy * 32, handler, ObjectId.Player));
-				}
-				
-				
 			}
 		}
 	}
@@ -156,7 +151,7 @@ public class PlatformRacer extends Canvas implements Runnable {
 	}
 	
 	public static void main(String[] args) {
-		new Window(800, 600, "Lava Runner", new PlatformRacer());
+		new Window(800, 600, "Platform Shooter", new PlatformShooter());
 	}
 
 }

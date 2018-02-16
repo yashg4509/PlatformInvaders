@@ -37,12 +37,12 @@ public class Handler {
 	}
 	
 	public void createLevel() {
-		for (int yy = 0; yy < PlatformRacer.HEIGHT + 32; yy += 32) {
+		for (int yy = 0; yy < PlatformShooter.HEIGHT + 32; yy += 32) {
 			addObject(new Block(0, yy, ObjectId.Block));
 		}
 		
-		for (int xx = 0; xx < PlatformRacer.WIDTH * 2; xx += 32) {
-			addObject(new Block(xx, PlatformRacer.HEIGHT - 32, ObjectId.Block));
+		for (int xx = 0; xx < PlatformShooter.WIDTH * 2; xx += 32) {
+			addObject(new Block(xx, PlatformShooter.HEIGHT - 32, ObjectId.Block));
 		}
 		
 		for (int xx = 200; xx < 600; xx += 32) {
