@@ -26,13 +26,12 @@ public class PlatformInvaders extends Canvas implements Runnable {
 	
 	int enemyCount = r.nextInt(35);
 	
-	int enemyX = r.nextInt(513);
+	int enemyX = r.nextInt(100);
 	
 	int enemyY = r.nextInt(513);
 
 	private BufferedImage level = null;
-	
-	static Texture tex = PlatformInvaders.getInstance();
+
 	Handler handler;
 	Camera c;
 	
@@ -82,7 +81,6 @@ public class PlatformInvaders extends Canvas implements Runnable {
 
 		HEIGHT = getHeight();
 		
-		tex = new Texture();
 
 		BufferedImageLoader loader = new BufferedImageLoader();
 
@@ -96,8 +94,8 @@ public class PlatformInvaders extends Canvas implements Runnable {
 
 		handler.addObject(new Player(100, 100, handler, ObjectId.Player));
 		
-		for (int i = 0; i < enemyCount; i++) {
-		handler.addObject(new Enemy(enemyX, enemyY, handler, ObjectId.Enemy));
+		for (int i = 0; i < 1; i++) {
+		handler.addObject(new Enemy(enemyX, 100, handler, ObjectId.Enemy));
 		}
 		// handler.createLevel();
 
@@ -155,10 +153,6 @@ public class PlatformInvaders extends Canvas implements Runnable {
 				
 			}
 		}
-	}
-	
-	public static Texture getInstance() {
-		return tex;
 	}
 	
 	public static void main(String[] args) {
