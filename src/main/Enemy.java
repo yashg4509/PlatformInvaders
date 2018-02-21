@@ -79,7 +79,7 @@ public class Enemy extends GameObject{
 					if(temp.getId() == ObjectId.Player) {
 					
 					if(getBoundsLeft().intersects(temp.getBounds())) {
-						System.out.println("leftEnemyP");
+						System.out.println("leftEnemy");
 					}
 					
 					if(getBoundsRight().intersects(temp.getBounds())) {
