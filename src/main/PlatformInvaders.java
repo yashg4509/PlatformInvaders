@@ -24,7 +24,7 @@ public class PlatformInvaders extends Canvas implements Runnable {
 	
 	public static Random r = new Random();
 	
-	int enemyCount = r.nextInt(35);
+	int enemyCount = r.nextInt(15);
 	
 	int enemyX = r.nextInt(100);
 	
@@ -92,10 +92,10 @@ public class PlatformInvaders extends Canvas implements Runnable {
 
 		loadLevel(level);
 
-		handler.addObject(new Player(100, 100, handler, ObjectId.Player));
+		handler.addObject(new Player(100, 200, handler, ObjectId.Player));
 		
-		for (int i = 0; i < 1; i++) {
-		handler.addObject(new Enemy(enemyX, 100, handler, ObjectId.Enemy));
+		for (int i = 0; i < enemyCount + 1; i++) {
+		handler.addObject(new Enemy(r.nextInt(600), 100, handler, ObjectId.Enemy));
 		}
 		// handler.createLevel();
 

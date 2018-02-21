@@ -28,6 +28,24 @@ public class Enemy extends GameObject{
 		
 			collision(object);
 			
+			for(GameObject e: object) {
+			if(isBouncing() && e.getId() != ObjectId.Enemy) {
+				if(y < 0) {
+					movement = -movement;
+					System.out.println("topCollision");
+				}
+				
+				if(e.getBounds().intersects(getBoundsTop())) {
+					movement = -movement;
+				}
+				if(e.getBounds().intersects(getBoundsTop()))
+					movement = -movement;
+				}
+				
+				if(e.getBounds().intersects(getBoundsRight())) {
+					movement = -movement;
+				}
+			}
 		}
 		
 		private void collision(LinkedList<GameObject> object) {
@@ -57,6 +75,26 @@ public class Enemy extends GameObject{
 					if(getBoundsLeft().intersects(temp.getBounds())) {
 						x = temp.getX() + 35;
 					}
+					
+					if(temp.getId() == ObjectId.Player) {
+					
+					if(getBoundsLeft().intersects(temp.getBounds())) {
+						System.out.println("leftEnemyP");
+					}
+					
+					if(getBoundsRight().intersects(temp.getBounds())) {
+						System.out.println("rightEmemyP");
+					}
+					
+					if(getBoundsTop().intersects(temp.getBounds())) {
+						System.out.println("topEnemyP");
+					}
+					
+					if(getBounds().intersects(temp.getBounds())) {
+						System.out.println("bottomEnemyP");
+					}
+					
+					}
 				}
 			}
 		}
@@ -68,7 +106,10 @@ public class Enemy extends GameObject{
 			y = (float) (y + movement);
 
 		}
-
+		
+		public void bounce() {
+		}
+		
 		public Rectangle getBounds() {
 			return new Rectangle((int) ((int)x + (width/2) - (width/2)/2), (int) ((int)y + (height/2)), (int)width/2, (int)height/2);
 		}

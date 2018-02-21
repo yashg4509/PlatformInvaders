@@ -13,6 +13,8 @@ public abstract class GameObject {
 	
 	protected boolean jumping = false;
 	
+	protected boolean bouncing = true;
+	
 	public boolean isFalling() {
 		return falling;
 	}
@@ -29,6 +31,14 @@ public abstract class GameObject {
 		this.jumping = jumping;
 	}
 
+	public boolean isBouncing() {
+		return bouncing;
+	}
+	
+	public void setBouncing(boolean bouncing) {
+		this.bouncing = bouncing;
+	}
+	
 	public GameObject(float x, float y, ObjectId id) {
 		this.x = x;
 		this.y = y;
