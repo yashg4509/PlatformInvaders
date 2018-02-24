@@ -12,6 +12,7 @@ public class Block extends GameObject{
 
 	public Block(float x, float y, ObjectId id) {
 		super(x, y, id);
+//		collisionBox.setBounds((int) x, (int) y, 32, 32);
 		// TODO Auto-generated constructor stub
 	}
 

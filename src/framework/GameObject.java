@@ -5,7 +5,13 @@ import java.awt.Rectangle;
 import java.util.LinkedList;
 
 public abstract class GameObject {
-	protected float x, y, velX = 0, velY = 0;
+	protected float x;
+
+	protected float y;
+
+	protected float velX = 0;
+
+	protected float velY = 0;
 	
 	protected ObjectId id;
 	
@@ -14,6 +20,8 @@ public abstract class GameObject {
 	protected boolean jumping = false;
 	
 	protected boolean bouncing = true;
+	
+	public static Rectangle collisionBox = new Rectangle();
 	
 	public boolean isFalling() {
 		return falling;
@@ -47,7 +55,10 @@ public abstract class GameObject {
 	
 	public abstract void tick(LinkedList<GameObject> object);
 	public abstract void render(Graphics g);
-	public abstract Rectangle getBounds();
+	
+	public Rectangle getBounds() {
+		return collisionBox.getBounds();
+	}
 	
 	public float getX() {
 		return x;

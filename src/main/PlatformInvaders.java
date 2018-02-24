@@ -94,11 +94,8 @@ public class PlatformInvaders extends Canvas implements Runnable {
 
 		handler.addObject(new Player(100, 200, handler, ObjectId.Player));
 		
-		for (int i = 0; i < enemyCount + 1; i++) {
-		handler.addObject(new Enemy(r.nextInt(600), 100, handler, ObjectId.Enemy));
-		}
-		// handler.createLevel();
-
+		for (int i = 0; i < r.nextInt(35) + 1; i++) handler.addObject(new Enemy(r.nextInt(500), 100, ObjectId.Enemy, handler));
+		
 		this.addKeyListener(new KeyInput(handler));
 	}
 

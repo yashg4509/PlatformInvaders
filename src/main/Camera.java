@@ -26,8 +26,7 @@ public class Camera {
 		this.y = y;
 	}
 
-	public void tick(GameObject player) {
-//		x--;
-//		x = -player.getX() + (PlatformInvaders.WIDTH/2);
+	public void tick(GameObject enemy) {
+		x-=3;
 	}
  }

@@ -26,7 +26,7 @@ public class Player extends GameObject{
 		y += velY;
 		
 		if (falling || jumping) {
-			velY += gravity;
+			velY += gravity + 0.1;
 			
 			if(velY > MAX_SPEED) {
 				velY = MAX_SPEED;
