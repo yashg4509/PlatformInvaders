@@ -7,6 +7,8 @@ import framework.ObjectId;
 import objects.Block;
 
 public class Handler {
+	public static int HEALTH;
+
 	public LinkedList<GameObject> oList = new LinkedList<>();
 	
 	private GameObject temp;

@@ -5,9 +5,9 @@ import java.awt.Rectangle;
 import java.util.LinkedList;
 
 public abstract class GameObject {
-	protected float x;
+	public float x;
 
-	protected float y;
+	public float y;
 
 	protected float velX = 0;
 

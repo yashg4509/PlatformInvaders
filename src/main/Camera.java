@@ -27,6 +27,6 @@ public class Camera {
 	}
 
 	public void tick(GameObject enemy) {
-		x-=3;
+		x-=2.5;
 	}
  }

@@ -12,8 +12,8 @@ public class Enemy extends GameObject{
         public Enemy(int x, int y, ObjectId id, Handler handler){
                 super(x,y,id);
                 this.handler = handler;
-                velX = 3;
-                velY = 3;
+                velX = 2;
+                velY = 2;
         }
         public Rectangle getBounds(){
                 return new Rectangle((int) x,(int) y, 70, 70);

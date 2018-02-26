@@ -4,7 +4,6 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 
 public class Window {
-	
 	Window(int w, int h, String title, PlatformInvaders game) {
 		game.setPreferredSize(new Dimension(w, h));
 		game.setMaximumSize(new Dimension(w, h));
@@ -18,5 +17,6 @@ public class Window {
 		window.setLocationRelativeTo(null);
 		window.setVisible(true);
 		game.start();
+		
 	}
 }
