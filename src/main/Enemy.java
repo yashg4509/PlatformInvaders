@@ -3,17 +3,19 @@ package main;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 import framework.GameObject;
 import framework.ObjectId;
+import objects.Block;
 public class Enemy extends GameObject{
         private Handler handler;
         public Enemy(int x, int y, ObjectId id, Handler handler){
                 super(x,y,id);
                 this.handler = handler;
-                velX = 2;
-                velY = 2;
+                velX = (float) 1.5;
+                velY = (float) 1.5;
         }
         public Rectangle getBounds(){
                 return new Rectangle((int) x,(int) y, 70, 70);

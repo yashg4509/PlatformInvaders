@@ -14,7 +14,7 @@ public class Player extends GameObject{
 	private final float MAX_SPEED = 10;
 	
 	private Handler handler;
-
+	private Camera c;
 	
 	public Player(float x, float y, Handler handler, ObjectId id) {
 		super(x, y, id);
@@ -32,6 +32,11 @@ public class Player extends GameObject{
 				velY = MAX_SPEED;
 			}
 		}
+		
+		if(y > TriggeredPlatvaders.HEIGHT) {
+			y = TriggeredPlatvaders.HEIGHT;
+		}
+		
 		collision(object);
 		
 	}
@@ -63,7 +68,10 @@ public class Player extends GameObject{
 				if(getBoundsLeft().intersects(temp.getBounds())) {
 					x = temp.getX() + 35;
 				}
+				
+				
 			}
+			
 		}
 	}
 
@@ -71,6 +79,26 @@ public class Player extends GameObject{
 		g.setColor(Color.blue);
 		g.fillRect((int)x, (int)y, (int)width, (int)height);
 		
+		for(int i = 0; i < handler.oList.size(); i++) {
+			GameObject temp = handler.oList.get(i);
+			if(temp.getId() == ObjectId.Enemy) {
+				if(temp.getBounds().intersects(getBounds())) {
+					System.out.println("bottom");
+				}
+				
+				if(temp.getBounds().intersects(getBoundsTop())) {
+					System.out.println("top");
+				}
+				
+				if(temp.getBounds().intersects(getBoundsRight())) {
+					System.out.println("right");
+				}
+				
+				if(temp.getBounds().intersects(getBoundsLeft())) {
+					System.out.println("left");
+				}
+			}
+		}
 
 	}
 

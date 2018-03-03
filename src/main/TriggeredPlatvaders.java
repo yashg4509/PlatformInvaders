@@ -14,7 +14,7 @@ import framework.KeyInput;
 import framework.ObjectId;
 import objects.Block;
 
-public class PlatformInvaders extends Canvas implements Runnable {
+public class TriggeredPlatvaders extends Canvas implements Runnable {
 
 	private static final long serialVersionUID = -599111449181499216L;
 	private boolean running = false;
@@ -153,7 +153,7 @@ public class PlatformInvaders extends Canvas implements Runnable {
 	}
 	
 	public static void main(String[] args) {
-		new Window(800, 600, "Platform Invaders", new PlatformInvaders());
+		new Window(800, 600, "Triggered Platvaders", new TriggeredPlatvaders());
 	}
 
 }
