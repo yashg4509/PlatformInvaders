@@ -7,9 +7,10 @@ import java.util.LinkedList;
 
 import framework.GameObject;
 import framework.ObjectId;
+import main.BufferedImageLoader;
 
 public class Block extends GameObject{
-
+	BufferedImageLoader loader = new BufferedImageLoader();
 	public Block(float x, float y, ObjectId id) {
 		super(x, y, id);
 //		collisionBox.setBounds((int) x, (int) y, 32, 32);
@@ -21,7 +22,6 @@ public class Block extends GameObject{
 	}
 
 	public void render(Graphics g) {
-		g.setColor(Color.white);
 		g.drawRect((int)x, (int)y, 32, 32);
 	}
 

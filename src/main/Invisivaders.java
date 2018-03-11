@@ -8,17 +8,16 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.util.Random;
 
-import javax.swing.JOptionPane;
-
 import framework.KeyInput;
 import framework.ObjectId;
 import objects.Block;
 
-public class TriggeredPlatvaders extends Canvas implements Runnable {
+public class Invisivaders extends Canvas implements Runnable {
 
 	private static final long serialVersionUID = -599111449181499216L;
 	private boolean running = false;
 	private Thread thread;
+	BufferedImageLoader loader = new BufferedImageLoader();
 
 	public static int WIDTH, HEIGHT;
 	
@@ -33,7 +32,10 @@ public class TriggeredPlatvaders extends Canvas implements Runnable {
 	private BufferedImage level = null;
 
 	Handler handler;
-	Camera c;
+	Camera camera;
+	public static Window win;
+	
+	private Player p;
 	
 	public synchronized void start() {
 		if (running) {
@@ -80,53 +82,62 @@ public class TriggeredPlatvaders extends Canvas implements Runnable {
 		WIDTH = getWidth();
 
 		HEIGHT = getHeight();
-		
-
-		BufferedImageLoader loader = new BufferedImageLoader();
 
 		level = loader.loadImage("/lvl1.png");
 
 		handler = new Handler();
 
-		c = new Camera(0, 0);
+		camera = new Camera(0, 0);
 
 		loadLevel(level);
-
-		handler.addObject(new Player(100, 200, handler, ObjectId.Player));
 		
-		for (int i = 0; i < r.nextInt(35) + 1; i++) handler.addObject(new Enemy(r.nextInt(500), 100, ObjectId.Enemy, handler));
+		p = new Player(100, 200, handler, ObjectId.Player);
+
+		 handler.addObject(p);
+		
+		for (int i = 0; i < r.nextInt(35) + 1; i++) 
+			handler.addObject(new Enemy(r.nextInt(500), 100, ObjectId.Enemy, handler));
 		
 		this.addKeyListener(new KeyInput(handler));
+		
 	}
 
 	private void tick() {
-		handler.tick();
+			handler.tick();
 
 		for (int i = 0; i < handler.oList.size(); i++) {
 			if (handler.oList.get(i).getId() == ObjectId.Player) {
-				c.tick(handler.oList.get(i));
+				camera.tick(handler.oList.get(i));
 			}
 		}
 	}
 
 	private void render() {
 		BufferStrategy bs = this.getBufferStrategy();
-		if (bs == null) {
+		if(bs == null)
+		{
 			this.createBufferStrategy(3);
 			return;
 		}
-
+		
 		Graphics g = bs.getDrawGraphics();
 		Graphics2D g2d = (Graphics2D) g;
-		///////////// DRAWINGS//////////////////////
-
-		g.setColor(Color.black);
-		g.fillRect(0, 0, getWidth(), getHeight());
-
-		g2d.translate(c.getX(), c.getY()); // begin of camera
+		//////////////////////////////////
+	
+		//Draw Here
+		g.setColor(Color.green);
+		g.fillRect(0,0,getWidth(), getHeight());
+		
+		
+		g2d.translate(camera.getX(), camera.getY());//begin of camera
+		
 		handler.render(g);
-		g2d.translate(-c.getX(), -c.getY()); // end of camera
-		///////////////
+		
+		
+		g2d.translate(-camera.getX(), -camera.getY());//end of camera
+		
+		//////////////////////////////////
+		
 		g.dispose();
 		bs.show();
 	}
@@ -153,7 +164,7 @@ public class TriggeredPlatvaders extends Canvas implements Runnable {
 	}
 	
 	public static void main(String[] args) {
-		new Window(800, 600, "Triggered Platvaders", new TriggeredPlatvaders());
+		win = new Window(800, 600, "Invisivaders: Block Edition", new Invisivaders());
 	}
 
 }

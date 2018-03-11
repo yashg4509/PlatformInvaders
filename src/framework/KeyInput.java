@@ -1,9 +1,11 @@
 package framework;
 
 import java.awt.event.KeyAdapter;
+
 import java.awt.event.KeyEvent;
 
 import main.Handler;
+import main.Invisivaders;
 
 public class KeyInput extends KeyAdapter{
 	
@@ -19,7 +21,7 @@ public class KeyInput extends KeyAdapter{
 		for (int i = 0; i < handler.oList.size(); i++) {
 			GameObject temp = handler.oList.get(i);
 			
-			if(temp.getId() == ObjectId.Player) {
+			if(temp.getId() == ObjectId.Player ) {
 				
 				if(key == KeyEvent.VK_D) {
 					temp.setVelX(5);
@@ -29,13 +31,15 @@ public class KeyInput extends KeyAdapter{
 					temp.setVelX(-5);
 				}
 			}
-			
+		
 		}
 		
 		if(key == KeyEvent.VK_ESCAPE) { //EXIT
 			System.exit(1);
+			
 		}
 	}
+	
 	
 	public void keyReleased(KeyEvent e) {
 		int key = e.getKeyCode();

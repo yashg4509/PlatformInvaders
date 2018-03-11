@@ -5,6 +5,8 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.util.LinkedList;
 
+import javax.swing.JOptionPane;
+
 import framework.GameObject;
 import framework.ObjectId;
 
@@ -33,9 +35,11 @@ public class Player extends GameObject{
 			}
 		}
 		
-		if(y > TriggeredPlatvaders.HEIGHT) {
-			y = TriggeredPlatvaders.HEIGHT;
+		if(y > Invisivaders.HEIGHT) {
+			y = Invisivaders.HEIGHT - 128;
 		}
+		
+		c = new Camera(0,0);
 		
 		collision(object);
 		
@@ -81,11 +85,11 @@ public class Player extends GameObject{
 		
 		for(int i = 0; i < handler.oList.size(); i++) {
 			GameObject temp = handler.oList.get(i);
+		
 			if(temp.getId() == ObjectId.Enemy) {
 				if(temp.getBounds().intersects(getBounds())) {
 					System.out.println("bottom");
 				}
-				
 				if(temp.getBounds().intersects(getBoundsTop())) {
 					System.out.println("top");
 				}
@@ -99,8 +103,7 @@ public class Player extends GameObject{
 				}
 			}
 		}
-
-	}
+		}
 
 	public Rectangle getBounds() {
 		return new Rectangle((int) ((int)x + (width/2) - (width/2)/2), (int) ((int)y + (height/2)), (int)width/2, (int)height/2);
