@@ -14,8 +14,8 @@ public class Enemy extends GameObject{
         public Enemy(int x, int y, ObjectId id, Handler handler){
                 super(x,y,id);
                 this.handler = handler;
-                velX = (float) 1.5;
-                velY = (float) 1.5;
+                velX = 1;
+                velY = 1;
         }
         public Rectangle getBounds(){
                 return new Rectangle((int) x,(int) y, 70, 70);
@@ -30,11 +30,16 @@ public class Enemy extends GameObject{
                 	}
                 	
                 	}
+                	
+                	
                 	else {
                 		break;
                 	}
                 	
-            		if(y > Invisivaders.HEIGHT - 128) {
+                }
+        	
+                	
+            		if(y > Invisivaders.HEIGHT - 116) {
             			y = Invisivaders.HEIGHT - 512;
             		}
             		
@@ -42,8 +47,9 @@ public class Enemy extends GameObject{
             			y = Invisivaders.HEIGHT - 512;
             		}
             		
+
                 	}
-                	}
+                	
                
         
         public void render(Graphics g){
