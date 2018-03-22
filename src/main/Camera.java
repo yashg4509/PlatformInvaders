@@ -3,7 +3,7 @@ package main;
 import framework.GameObject;
 
 public class Camera {
-	float x;
+	static float x;
 	private float y;
 	
 	public Camera (float x, float y) {
@@ -11,7 +11,7 @@ public class Camera {
 		this.y = y;
 	}
 
-	public float getX() {
+	public static float getX() {
 		return x;
 	}
 
@@ -28,6 +28,6 @@ public class Camera {
 	}
 
 	public void tick(GameObject enemy) {
-		x-=1;
+		x-=1.5;
 	}
  }

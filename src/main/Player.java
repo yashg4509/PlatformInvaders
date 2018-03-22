@@ -38,8 +38,7 @@ public class Player extends GameObject{
 		if(y > Invisivaders.HEIGHT) {
 			y = Invisivaders.HEIGHT - 128;
 		}
-		
-		c = new Camera(0,0);
+	
 		
 		collision(object);
 		

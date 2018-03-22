@@ -32,7 +32,7 @@ public class Invisivaders extends Canvas implements Runnable {
 	private BufferedImage level = null;
 
 	Handler handler;
-	Camera camera;
+	public static Camera camera;
 	public static Window win;
 	
 	private Player p;
