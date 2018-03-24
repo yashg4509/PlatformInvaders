@@ -38,6 +38,11 @@ public class Player extends GameObject{
 		if(y > Invisivaders.HEIGHT) {
 			y = Invisivaders.HEIGHT - 128;
 		}
+		
+//		System.out.println(Camera.x + ", " + x);
+//		if(Camera.x > x) {
+//			System.out.println("ploob");
+//		}
 	
 		
 		collision(object);
@@ -100,6 +105,7 @@ public class Player extends GameObject{
 				if(temp.getBounds().intersects(getBoundsLeft())) {
 					System.out.println("left");
 				}
+				
 			}
 		}
 		}
