@@ -2,9 +2,12 @@ package main;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Rectangle;
+import java.io.IOException;
 import java.util.LinkedList;
 
+import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 
 import framework.GameObject;
@@ -14,13 +17,25 @@ public class Player extends GameObject{
 	private float width = 48, height = 96;
 	private float gravity = 0.5f;
 	private final float MAX_SPEED = 10;
+	public static float x;
 	
 	private Handler handler;
 	private Camera c;
 	
+	public Image playerimg;
+	
+	
 	public Player(float x, float y, Handler handler, ObjectId id) {
 		super(x, y, id);
 		this.handler = handler;
+		this.x = x;
+		
+		try {
+			playerimg = ImageIO.read(this.getClass().getResourceAsStream("player.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void tick(LinkedList<GameObject> object) {
@@ -39,10 +54,6 @@ public class Player extends GameObject{
 			y = Invisivaders.HEIGHT - 128;
 		}
 		
-//		System.out.println(Camera.x + ", " + x);
-//		if(Camera.x > x) {
-//			System.out.println("ploob");
-//		}
 	
 		
 		collision(object);
@@ -84,28 +95,27 @@ public class Player extends GameObject{
 	}
 
 	public void render(Graphics g) {
-		g.setColor(Color.blue);
-		g.fillRect((int)x, (int)y, (int)width, (int)height);
+//		g.setColor(Color.blue);
+//		g.fillRect((int)x, (int)y, (int)width, (int)height);
+		
+		g.drawImage(playerimg, (int) x, (int) y, (int) width, (int) height, null);
 		
 		for(int i = 0; i < handler.oList.size(); i++) {
 			GameObject temp = handler.oList.get(i);
 		
 			if(temp.getId() == ObjectId.Enemy) {
 				if(temp.getBounds().intersects(getBounds())) {
-					System.out.println("bottom");
-				}
-				if(temp.getBounds().intersects(getBoundsTop())) {
-					System.out.println("top");
+					JOptionPane.showMessageDialog(null, "Sorry! You lost! Double tap ESC!");
 				}
 				
-				if(temp.getBounds().intersects(getBoundsRight())) {
-					System.out.println("right");
-				}
-				
-				if(temp.getBounds().intersects(getBoundsLeft())) {
-					System.out.println("left");
-				}
-				
+			}
+			
+			if(x <= Math.abs((double) Camera.x)) {
+				x = Math.abs(Camera.x);
+			}
+			
+			if(x > (Math.abs(Camera.x) + 450)) {
+				Enemy.velX
 			}
 		}
 		}

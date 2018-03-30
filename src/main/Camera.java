@@ -5,6 +5,7 @@ import framework.GameObject;
 public class Camera {
 	static float x;
 	private float y;
+	private float speed = 1.5f;
 	
 	public Camera (float x, float y) {
 		this.x = x;
@@ -28,6 +29,6 @@ public class Camera {
 	}
 
 	public void tick(GameObject enemy) {
-		x-=1.5;
+		x-=speed;
 	}
  }

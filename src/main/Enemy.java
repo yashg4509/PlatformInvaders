@@ -5,8 +5,12 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Random;
+
+import javax.imageio.ImageIO;
 
 import framework.GameObject;
 import framework.ObjectId;
@@ -16,10 +20,21 @@ public class Enemy extends GameObject {
 	private Handler handler;
 	Random r = new Random();
 	double angle = r.nextDouble();
+	public static int x;
+	public Image alienImg;
 
 	public Enemy(int x, int y, ObjectId id, Handler handler) {
 		super(x, y, id);
 		this.handler = handler;
+		this.x = x;
+		
+		try {
+			alienImg = ImageIO.read(this.getClass().getResourceAsStream("enemySprite.PNG"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		velX = (float) 1.5;
 		velY = (float) 1.5;
 	}
@@ -42,17 +57,20 @@ public class Enemy extends GameObject {
 		}
 
 		if (y > Invisivaders.HEIGHT - 116) {
-			y = Invisivaders.HEIGHT - 512;
+			velY *= -1;
 		}
 		
-		if(y < 32) {
-			y = Invisivaders.HEIGHT - 512;
+		if(y < 36) {
+			velY *= -1;
 		}
+		
+		
 
 	}
 
 	public void render(Graphics g) {
-		g.setColor(Color.red);
-		g.fillRect((int) x, (int) y, 70, 70);
+		g.drawImage(alienImg, (int) x, (int) y, 70, 70, null);
+//		g.setColor(Color.red);
+//		g.fillRect((int) x, (int) y, 70, 70);
 	}
 }
