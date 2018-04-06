@@ -19,6 +19,8 @@ public class Player extends GameObject{
 	private final float MAX_SPEED = 10;
 	public static float x;
 	
+	long timer = System.currentTimeMillis();
+	
 	private Handler handler;
 	private Camera c;
 	
@@ -114,9 +116,7 @@ public class Player extends GameObject{
 				x = Math.abs(Camera.x);
 			}
 			
-			if(x > (Math.abs(Camera.x) + 450)) {
-				Enemy.velX
-			}
+
 		}
 		}
 

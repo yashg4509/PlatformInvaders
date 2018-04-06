@@ -20,7 +20,6 @@ public class Enemy extends GameObject {
 	private Handler handler;
 	Random r = new Random();
 	double angle = r.nextDouble();
-	public static int x;
 	public Image alienImg;
 
 	public Enemy(int x, int y, ObjectId id, Handler handler) {
@@ -50,7 +49,7 @@ public class Enemy extends GameObject {
 			if (e.getId() == ObjectId.Block) {
 				if (e.getBounds().intersects(getBounds())) {
 					velY *= -1;
-				}
+					velX+=.01;				}
 
 			}
 
@@ -58,11 +57,23 @@ public class Enemy extends GameObject {
 
 		if (y > Invisivaders.HEIGHT - 116) {
 			velY *= -1;
-		}
+			velX+=.01;		}
 		
 		if(y < 36) {
 			velY *= -1;
+			velX+=.01;
 		}
+		
+		if(x >= (Math.abs((double) Camera.x) + 800)) {
+			velX *= -1;
+			velY *= -1;
+		}
+		
+		if(x <= Math.abs((double) Camera.x)) {
+				x = (Math.abs(Camera.x)) + r.nextInt(800);
+			
+		}
+		
 		
 		
 

@@ -23,7 +23,6 @@ public class Invisivaders extends Canvas implements Runnable {
 	
 	public static Random r = new Random();
 	
-	int enemyCount = r.nextInt(15);
 	
 	int enemyX = r.nextInt(100);
 	
@@ -94,9 +93,11 @@ public class Invisivaders extends Canvas implements Runnable {
 		p = new Player(100, 200, handler, ObjectId.Player);
 
 		 handler.addObject(p);
+		 
+		Random pleb = new Random();
 		
-		for (int i = 0; i < r.nextInt(35) + 1; i++) 
-			handler.addObject(new Enemy(r.nextInt(500), 100, ObjectId.Enemy, handler));
+		for (int i = 0; i < pleb.nextInt(15) + 2; i++) 
+			handler.addObject(new Enemy(pleb.nextInt(800), 100, ObjectId.Enemy, handler));
 		
 		this.addKeyListener(new KeyInput(handler));
 		
