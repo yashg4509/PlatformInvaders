@@ -4,22 +4,23 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Rectangle;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.LinkedList;
 
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
+import javax.swing.Timer;
 
 import framework.GameObject;
 import framework.ObjectId;
 
-public class Player extends GameObject{
+public class Player extends GameObject {
 	private float width = 48, height = 96;
 	private float gravity = 0.5f;
 	private final float MAX_SPEED = 10;
 	public static float x;
-	
-	long timer = System.currentTimeMillis();
+
 	
 	private Handler handler;
 	private Camera c;
@@ -107,9 +108,17 @@ public class Player extends GameObject{
 		
 			if(temp.getId() == ObjectId.Enemy) {
 				if(temp.getBounds().intersects(getBounds())) {
-					JOptionPane.showMessageDialog(null, "Sorry! You lost! Double tap ESC!");
+					JOptionPane.showMessageDialog(null, "Sorry! You lost! Double tap ESC! You score is " + (Invisivaders.startTime/1000000000)/10000 + ".");
 				}
 				
+				if(temp.getBounds().intersects(getBoundsTop())) {
+					JOptionPane.showMessageDialog(null, "Sorry! You lost! Double tap ESC! You score is " + (Invisivaders.startTime/1000000000)/10000 + ".");				}
+				
+				if(temp.getBounds().intersects(getBoundsRight())) {
+					JOptionPane.showMessageDialog(null, "Sorry! You lost! Double tap ESC! You score is " + (Invisivaders.startTime/1000000000)/10000 + ".");				}
+				
+				if(temp.getBounds().intersects(getBoundsLeft())) {
+					JOptionPane.showMessageDialog(null, "Sorry! You lost! Double tap ESC! You score is " + (Invisivaders.startTime/1000000000)/10000 + ".");				}
 			}
 			
 			if(x <= Math.abs((double) Camera.x)) {

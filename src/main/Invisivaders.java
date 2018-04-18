@@ -8,6 +8,8 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.util.Random;
 
+import javax.swing.Timer;
+
 import framework.KeyInput;
 import framework.ObjectId;
 import objects.Block;
@@ -22,7 +24,7 @@ public class Invisivaders extends Canvas implements Runnable {
 	public static int WIDTH, HEIGHT;
 	
 	public static Random r = new Random();
-	
+	static long startTime;
 	
 	int enemyX = r.nextInt(100);
 	
@@ -49,6 +51,7 @@ public class Invisivaders extends Canvas implements Runnable {
 	public void run() {
 		requestFocus();
 		init();
+		startTime = System.nanoTime();
 		long lastTime = System.nanoTime();
 		double amountOfTicks = 60.0;
 		double ns = 1000000000 / amountOfTicks;
@@ -60,6 +63,7 @@ public class Invisivaders extends Canvas implements Runnable {
 			long now = System.nanoTime();
 			delta += (now - lastTime) / ns;
 			lastTime = now;
+			win.changeTimeAlive(lastTime - startTime + "");
 			while (delta >= 1) {
 				tick();
 				updates++;
@@ -96,12 +100,13 @@ public class Invisivaders extends Canvas implements Runnable {
 		 
 		Random pleb = new Random();
 		
-		for (int i = 0; i < pleb.nextInt(15) + 2; i++) 
+		for (int i = 0; i < pleb.nextInt(10) + 2; i++) 
 			handler.addObject(new Enemy(pleb.nextInt(800), 100, ObjectId.Enemy, handler));
 		
 		this.addKeyListener(new KeyInput(handler));
 		
 	}
+	
 
 	private void tick() {
 			handler.tick();
