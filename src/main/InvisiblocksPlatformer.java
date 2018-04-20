@@ -4,17 +4,20 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.Random;
 
+import javax.imageio.ImageIO;
 import javax.swing.Timer;
 
 import framework.KeyInput;
 import framework.ObjectId;
 import objects.Block;
 
-public class Invisivaders extends Canvas implements Runnable {
+public class InvisiblocksPlatformer extends Canvas implements Runnable {
 
 	private static final long serialVersionUID = -599111449181499216L;
 	private boolean running = false;
@@ -26,11 +29,11 @@ public class Invisivaders extends Canvas implements Runnable {
 	public static Random r = new Random();
 	static long startTime;
 	
-	int enemyX = r.nextInt(100);
-	
-	int enemyY = r.nextInt(513);
+	int initEnemyCount = 1;
+	int enemyX = r.nextInt(800);
 
 	private BufferedImage level = null;
+	private Image background;
 
 	Handler handler;
 	public static Camera camera;
@@ -63,7 +66,6 @@ public class Invisivaders extends Canvas implements Runnable {
 			long now = System.nanoTime();
 			delta += (now - lastTime) / ns;
 			lastTime = now;
-			win.changeTimeAlive(lastTime - startTime + "");
 			while (delta >= 1) {
 				tick();
 				updates++;
@@ -78,6 +80,10 @@ public class Invisivaders extends Canvas implements Runnable {
 				frames = 0;
 				updates = 0;
 			}
+			
+			if(enemyX%200 == 0) {
+				handler.addObject(new Enemy(enemyX, (int) (Camera.x + 100), ObjectId.Enemy, handler));
+			}
 		}
 	}
 
@@ -91,17 +97,22 @@ public class Invisivaders extends Canvas implements Runnable {
 		handler = new Handler();
 
 		camera = new Camera(0, 0);
+		
+		try {
+			background = ImageIO.read(this.getClass().getResourceAsStream("background.jpg"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 		loadLevel(level);
 		
 		p = new Player(100, 200, handler, ObjectId.Player);
 
 		 handler.addObject(p);
-		 
-		Random pleb = new Random();
 		
-		for (int i = 0; i < pleb.nextInt(10) + 2; i++) 
-			handler.addObject(new Enemy(pleb.nextInt(800), 100, ObjectId.Enemy, handler));
+		
+		for (int i = 0; i < initEnemyCount; i++) 
+			handler.addObject(new Enemy(enemyX, 100, ObjectId.Enemy, handler));
 		
 		this.addKeyListener(new KeyInput(handler));
 		
@@ -131,8 +142,7 @@ public class Invisivaders extends Canvas implements Runnable {
 		//////////////////////////////////
 	
 		//Draw Here
-		g.setColor(Color.green);
-		g.fillRect(0,0,getWidth(), getHeight());
+		g.drawImage(background, 0, 0, getWidth(), getHeight(), null);
 		
 		
 		g2d.translate(camera.getX(), camera.getY());//begin of camera
@@ -170,7 +180,7 @@ public class Invisivaders extends Canvas implements Runnable {
 	}
 	
 	public static void main(String[] args) {
-		win = new Window(800, 600, "Invisivaders: Block Edition", new Invisivaders());
+		win = new Window(800, 600, "Invisiblocks Platformer PC", new InvisiblocksPlatformer());
 	}
 
 }

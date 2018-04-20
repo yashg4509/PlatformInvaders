@@ -55,7 +55,7 @@ public class Enemy extends GameObject {
 
 		}
 
-		if (y > Invisivaders.HEIGHT - 116) {
+		if (y > InvisiblocksPlatformer.HEIGHT - 116) {
 			velY *= -1;
 			velX+=.01;		}
 		

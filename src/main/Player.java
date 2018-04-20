@@ -53,8 +53,8 @@ public class Player extends GameObject {
 			}
 		}
 		
-		if(y > Invisivaders.HEIGHT) {
-			y = Invisivaders.HEIGHT - 128;
+		if(y > InvisiblocksPlatformer.HEIGHT) {
+			y = InvisiblocksPlatformer.HEIGHT - 128;
 		}
 		
 	
@@ -108,26 +108,28 @@ public class Player extends GameObject {
 		
 			if(temp.getId() == ObjectId.Enemy) {
 				if(temp.getBounds().intersects(getBounds())) {
-					JOptionPane.showMessageDialog(null, "Sorry! You lost! Double tap ESC! You score is " + (Invisivaders.startTime/1000000000)/10000 + ".");
+					JOptionPane.showMessageDialog(null, "Sorry! You lost! Double tap ESC! You score is " + x + ".");
 				}
 				
 				if(temp.getBounds().intersects(getBoundsTop())) {
-					JOptionPane.showMessageDialog(null, "Sorry! You lost! Double tap ESC! You score is " + (Invisivaders.startTime/1000000000)/10000 + ".");				}
+					JOptionPane.showMessageDialog(null, "Sorry! You lost! Double tap ESC! You score is " + x + ".");
+				}
 				
-				if(temp.getBounds().intersects(getBoundsRight())) {
-					JOptionPane.showMessageDialog(null, "Sorry! You lost! Double tap ESC! You score is " + (Invisivaders.startTime/1000000000)/10000 + ".");				}
+				if(temp.getBounds().intersects(getBoundsRight())) { 
+					JOptionPane.showMessageDialog(null, "Sorry! You lost! Double tap ESC! You score is " + x + ".");
+				}
 				
 				if(temp.getBounds().intersects(getBoundsLeft())) {
-					JOptionPane.showMessageDialog(null, "Sorry! You lost! Double tap ESC! You score is " + (Invisivaders.startTime/1000000000)/10000 + ".");				}
+					JOptionPane.showMessageDialog(null, "Sorry! You lost! Double tap ESC! You score is " + x + ".");
 			}
 			
 			if(x <= Math.abs((double) Camera.x)) {
 				x = Math.abs(Camera.x);
 			}
+			}
+		}
+	}
 			
-
-		}
-		}
 
 	public Rectangle getBounds() {
 		return new Rectangle((int) ((int)x + (width/2) - (width/2)/2), (int) ((int)y + (height/2)), (int)width/2, (int)height/2);

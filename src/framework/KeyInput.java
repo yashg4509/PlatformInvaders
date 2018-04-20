@@ -5,7 +5,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 import main.Handler;
-import main.Invisivaders;
+import main.InvisiblocksPlatformer;
 
 public class KeyInput extends KeyAdapter{
 	

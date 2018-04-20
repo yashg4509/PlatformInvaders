@@ -39,12 +39,12 @@ public class Handler {
 	}
 	
 	public void createLevel() {
-		for (int yy = 0; yy < Invisivaders.HEIGHT + 32; yy += 32) {
+		for (int yy = 0; yy < InvisiblocksPlatformer.HEIGHT + 32; yy += 32) {
 			addObject(new Block(0, yy, ObjectId.Block));
 		}
 		
-		for (int xx = 0; xx < Invisivaders.WIDTH * 2; xx += 32) {
-			addObject(new Block(xx, Invisivaders.HEIGHT - 32, ObjectId.Block));
+		for (int xx = 0; xx < InvisiblocksPlatformer.WIDTH * 2; xx += 32) {
+			addObject(new Block(xx, InvisiblocksPlatformer.HEIGHT - 32, ObjectId.Block));
 		}
 		
 		for (int xx = 200; xx < 600; xx += 32) {
