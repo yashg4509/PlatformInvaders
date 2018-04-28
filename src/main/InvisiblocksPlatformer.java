@@ -81,8 +81,8 @@ public class InvisiblocksPlatformer extends Canvas implements Runnable {
 				updates = 0;
 			}
 			
-			if(enemyX%200 == 0) {
-				handler.addObject(new Enemy(enemyX, (int) (Camera.x + 100), ObjectId.Enemy, handler));
+			if(p.x%1500 == 0) {
+				handler.addObject(new Enemy(enemyX, 100, ObjectId.Enemy, handler));
 			}
 		}
 	}

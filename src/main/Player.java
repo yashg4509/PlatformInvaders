@@ -124,6 +124,10 @@ public class Player extends GameObject {
 			}
 			
 			if(x <= Math.abs((double) Camera.x)) {
+				x = Math.abs(Camera.x) + 2;
+			}
+			
+			if(x >= Math.abs((double) Camera.x - 800)) {
 				x = Math.abs(Camera.x);
 			}
 			}
