@@ -49,8 +49,8 @@ public class Enemy extends GameObject {
 			if (e.getId() == ObjectId.Block) {
 				if (e.getBounds().intersects(getBounds())) {
 					velY *= -1;
-					velX+=.01;				}
-
+					velX+=.01;
+ 
 			}
 
 		}
@@ -82,6 +82,7 @@ public class Enemy extends GameObject {
 			
 		}
 		
+		}
 		
 		
 

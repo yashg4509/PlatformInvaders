@@ -69,7 +69,7 @@ public class Player extends GameObject {
 			
 			if(temp.getId() == ObjectId.Block) {
 				if(getBoundsTop().intersects(temp.getBounds())) {
-					y = temp.getY() + 32;
+					y = temp.getY() - 32;
 					velY = 0;
 			}
 				
