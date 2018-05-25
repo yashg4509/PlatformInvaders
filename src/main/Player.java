@@ -109,19 +109,23 @@ public class Player extends GameObject {
 			if(temp.getId() == ObjectId.Enemy) {
 				if(temp.getBounds().intersects(getBounds())) {
 					JOptionPane.showMessageDialog(null, "Sorry! You lost! Double tap ESC! You score is " + x + ".");
+					System.exit(0);
 				}
 				
 				if(temp.getBounds().intersects(getBoundsTop())) {
 					JOptionPane.showMessageDialog(null, "Sorry! You lost! Double tap ESC! You score is " + x + ".");
+					System.exit(0);
 				}
 				
 				if(temp.getBounds().intersects(getBoundsRight())) { 
 					JOptionPane.showMessageDialog(null, "Sorry! You lost! Double tap ESC! You score is " + x + ".");
+					System.exit(0);
 				}
 				
 				if(temp.getBounds().intersects(getBoundsLeft())) {
 					JOptionPane.showMessageDialog(null, "Sorry! You lost! Double tap ESC! You score is " + x + ".");
-			}
+					System.exit(0);
+				}
 			
 			if(x <= Math.abs((double) Camera.x)) {
 				x = Math.abs(Camera.x) + 2;

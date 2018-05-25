@@ -53,6 +53,7 @@ public class Enemy extends GameObject {
  
 			}
 
+
 		}
 
 //		if (y > InvisiblocksPlatformer.HEIGHT - 116) {
@@ -73,14 +74,19 @@ public class Enemy extends GameObject {
 		}
 		
 		if(x >= (Math.abs((double) Camera.x) + 800)) {
-			velX *= -1;
-			velY *= -1;
+			x = Math.abs(Camera.x);
 		}
 		
 		if(x <= Math.abs((double) Camera.x) - 70) {
 				x = Math.abs(Camera.x) + 800;
 			
 		}
+		
+		if(x == Math.abs(Camera.x)) {
+			x += 10;
+			
+		}
+		
 		
 		}
 		
