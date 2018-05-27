@@ -7,7 +7,7 @@ import javax.swing.JLabel;
 public class Window {
 
 
-	Window(int w, int h, String title, InvisiblocksPlatformer game) {
+	Window(int w, int h, String title, RunBounceJump game) {
 		game.setPreferredSize(new Dimension(w, h));
 		game.setMaximumSize(new Dimension(w, h));
 		game.setMinimumSize(new Dimension(w, h));

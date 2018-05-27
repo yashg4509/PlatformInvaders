@@ -73,7 +73,7 @@ public class Enemy extends GameObject {
 			velX = 5;
 		}
 		
-		if(x >= (Math.abs((double) Camera.x) + 800)) {
+		if(x >= (Math.abs((double) Camera.x) + 870)) {
 			x = Math.abs(Camera.x);
 		}
 		
@@ -83,7 +83,7 @@ public class Enemy extends GameObject {
 		}
 		
 		if(x == Math.abs(Camera.x)) {
-			x += 10;
+			x += 75;
 			
 		}
 		

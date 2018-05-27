@@ -17,7 +17,7 @@ import framework.KeyInput;
 import framework.ObjectId;
 import objects.Block;
 
-public class InvisiblocksPlatformer extends Canvas implements Runnable {
+public class RunBounceJump extends Canvas implements Runnable {
 
 	private static final long serialVersionUID = -599111449181499216L;
 	private boolean running = false;
@@ -180,7 +180,7 @@ public class InvisiblocksPlatformer extends Canvas implements Runnable {
 	}
 	
 	public static void main(String[] args) {
-		win = new Window(800, 600, "Invisiblocks Platformer PC", new InvisiblocksPlatformer());
+		win = new Window(800, 600, "Run. Bounce. Jump.", new RunBounceJump());
 	}
 
 }

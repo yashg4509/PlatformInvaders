@@ -53,8 +53,8 @@ public class Player extends GameObject {
 			}
 		}
 		
-		if(y > InvisiblocksPlatformer.HEIGHT) {
-			y = InvisiblocksPlatformer.HEIGHT - 128;
+		if(y > RunBounceJump.HEIGHT) {
+			y = RunBounceJump.HEIGHT - 128;
 		}
 		
 	
