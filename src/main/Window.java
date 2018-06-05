@@ -3,6 +3,7 @@ import java.awt.Dimension;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 public class Window {
 
@@ -19,6 +20,7 @@ public class Window {
 		window.setResizable(true);
 		window.setLocationRelativeTo(null);
 		window.setVisible(true);
+		JOptionPane.showMessageDialog(null, "Be wise! Some enemies you cannot see and enemies don't follow the walls! Good Luck!");
 		game.start();
 		
 	}

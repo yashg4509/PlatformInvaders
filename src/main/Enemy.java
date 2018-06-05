@@ -19,7 +19,6 @@ import objects.Block;
 public class Enemy extends GameObject {
 	private Handler handler;
 	Random r = new Random();
-	double angle = r.nextDouble();
 	public Image alienImg;
 
 	public Enemy(int x, int y, ObjectId id, Handler handler) {

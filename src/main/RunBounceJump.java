@@ -81,7 +81,7 @@ public class RunBounceJump extends Canvas implements Runnable {
 				updates = 0;
 			}
 			
-			if(p.x%500 == 0) {
+			if(p.x%200 == 0) {
 				handler.addObject(new Enemy(enemyX, 100, ObjectId.Enemy, handler));
 			}
 		}
@@ -111,8 +111,9 @@ public class RunBounceJump extends Canvas implements Runnable {
 		 handler.addObject(p);
 		
 		
-		for (int i = 0; i < initEnemyCount; i++) 
+		for (int i = initEnemyCount; i < initEnemyCount; i++) {
 			handler.addObject(new Enemy(enemyX, 100, ObjectId.Enemy, handler));
+		}
 		
 		this.addKeyListener(new KeyInput(handler));
 		
